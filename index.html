@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Wiki</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sunsanee&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ===== HEADER TITLE ===== -->
+    <header class="header">
+        <h1 class="main-title">Character Wiki</h1>
+        <p class="subtitle">Explore Your Favorite Characters</p>
+    </header>
+
+    <!-- ===== CHARACTER IMAGE & FLIP CARD ===== -->
+    <section class="character-showcase">
+        <div class="character-image-container">
+            <img src="https://via.placeholder.com/300x400/667eea/ffffff?text=Character+Image" alt="Main Character" class="character-image">
+        </div>
+
+        <div class="card-flip-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <!-- Front -->
+                    <div class="flip-card-front">
+                        <img src="https://via.placeholder.com/250x350/667eea/ffffff?text=Card+Front" alt="Card Front">
+                        <p class="card-label">Card Front</p>
+                    </div>
+                    <!-- Back -->
+                    <div class="flip-card-back">
+                        <img src="https://via.placeholder.com/250x350/764ba2/ffffff?text=Card+Back" alt="Card Back">
+                        <p class="card-label">Card Back</p>
+                    </div>
+                </div>
+            </div>
+            <button class="flip-btn" onclick="flipCard()">🔄 Flip Card</button>
+        </div>
+    </section>
+
+    <!-- ===== CHARACTER INFO (TWO COLUMNS) ===== -->
+    <section class="character-info">
+        <h2 class="section-title">Character Information</h2>
+        <div class="info-container">
+            <!-- Left Column -->
+            <div class="info-column">
+                <div class="info-item">
+                    <label class="info-label">Full Name:</label>
+                    <p class="info-value">Sakura Tanaka</p>
+                </div>
+                <div class="info-item">
+                    <label class="info-label">Nickname:</label>
+                    <p class="info-value">Sakura-chan</p>
+                </div>
+                <div class="info-item">
+                    <label class="info-label">Age:</label>
+                    <p class="info-value">25 years old</p>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="info-column">
+                <div class="info-item">
+                    <label class="info-label">Height:</label>
+                    <p class="info-value">165 cm</p>
+                </div>
+                <div class="info-item">
+                    <label class="info-label">Weight:</label>
+                    <p class="info-value">52 kg</p>
+                </div>
+                <div class="info-item">
+                    <label class="info-label">Likes:</label>
+                    <p class="info-value">Cherry blossoms, Cooking, Reading</p>
+                </div>
+                <div class="info-item">
+                    <label class="info-label">Dislikes:</label>
+                    <p class="info-value">Spicy food, Loneliness</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SUPPORTING CHARACTERS (CAROUSEL) ===== -->
+    <section class="supporting-characters">
+        <h2 class="section-title">Supporting Characters</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="prevCharacter()">❮</button>
+            
+            <div class="character-card-carousel">
+                <div class="carousel-item active">
+                    <div class="support-card">
+                        <div class="card-image-side">
+                            <img src="https://via.placeholder.com/200x280/ff6b6b/ffffff?text=Character+2" alt="Support Character">
+                        </div>
+                        <div class="card-info-side">
+                            <h3>Character 2</h3>
+                            <p class="role-badge">Best Friend</p>
+                            <p class="description">A cheerful friend who loves adventures and always supports the main character.</p>
+                            <button class="flip-support-btn" onclick="flipSupportCard(0)">🔄 Flip</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="support-card">
+                        <div class="card-image-side">
+                            <img src="https://via.placeholder.com/200x280/4ecdc4/ffffff?text=Character+3" alt="Support Character">
+                        </div>
+                        <div class="card-info-side">
+                            <h3>Character 3</h3>
+                            <p class="role-badge">Mentor</p>
+                            <p class="description">A wise mentor who guides the protagonist through challenges and growth.</p>
+                            <button class="flip-support-btn" onclick="flipSupportCard(1)">🔄 Flip</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="support-card">
+                        <div class="card-image-side">
+                            <img src="https://via.placeholder.com/200x280/95e1d3/ffffff?text=Character+4" alt="Support Character">
+                        </div>
+                        <div class="card-info-side">
+                            <h3>Character 4</h3>
+                            <p class="role-badge">Rival</p>
+                            <p class="description">A strong competitor who pushes the main character to improve and evolve.</p>
+                            <button class="flip-support-btn" onclick="flipSupportCard(2)">🔄 Flip</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-btn next" onclick="nextCharacter()">❯</button>
+        </div>
+    </section>
+
+    <!-- ===== MUSIC PLAYER ===== -->
+    <section class="music-section">
+        <h2 class="section-title">Character Theme Music</h2>
+        <div class="music-player-container">
+            <div class="music-frame">
+                <button class="music-trigger-btn" onclick="toggleMusicCard()">🎵 Show Music Card</button>
+            </div>
+
+            <div class="music-card" id="musicCard">
+                <div class="music-disc-container">
+                    <div class="music-disc" id="musicDisc">
+                        <div class="disc-inner"></div>
+                    </div>
+                </div>
+                <div class="music-info">
+                    <h3>Character Theme</h3>
+                    <p>Amazing Soundtrack</p>
+                    <div class="music-controls">
+                        <button onclick="toggleMusic()">▶</button>
+                        <input type="range" class="music-progress" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODEL SHOWCASE ===== -->
+    <section class="model-showcase">
+        <h2 class="section-title">How to Play</h2>
+        <div class="model-showcase-content">
+            <div class="showcase-card">
+                <div class="showcase-icon">🎮</div>
+                <h3>Getting Started</h3>
+                <p>Learn the basics of the game and understand the core mechanics.</p>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-icon">📖</div>
+                <h3>Story Mode</h3>
+                <p>Follow the character's journey through an engaging narrative.</p>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-icon">⚔️</div>
+                <h3>Battle System</h3>
+                <p>Master the combat mechanics and defeat your enemies strategically.</p>
+            </div>
+            <div class="showcase-card">
+                <div class="showcase-icon">✨</div>
+                <h3>Abilities & Skills</h3>
+                <p>Unlock powerful skills and special abilities as you progress.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SEARCH & TABS ===== -->
+    <section class="search-section">
+        <h2 class="section-title">Search & Navigation</h2>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search topics..." id="searchInput" onkeyup="filterTabs()">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="filterByTab('all')">All</button>
+                <button class="tab-btn" onclick="filterByTab('story')">Story</button>
+                <button class="tab-btn" onclick="filterByTab('abilities')">Abilities</button>
+                <button class="tab-btn" onclick="filterByTab('relationships')">Relationships</button>
+            </div>
+        </div>
+        <div class="search-results">
+            <div class="result-item" data-tag="all story">Story Overview</div>
+            <div class="result-item" data-tag="all story">Background</div>
+            <div class="result-item" data-tag="all abilities">Fire Attack</div>
+            <div class="result-item" data-tag="all abilities">Ice Spell</div>
+            <div class="result-item" data-tag="all relationships">Best Friend Bond</div>
+            <div class="result-item" data-tag="all relationships">Rival Dynamic</div>
+        </div>
+    </section>
+
+    <!-- ===== CHARACTER GALLERY ===== -->
+    <section class="character-gallery">
+        <h2 class="section-title">Character Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/200x250/667eea/ffffff?text=Pose+1" alt="Pose 1">
+                <p>Pose 1</p>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/200x250/764ba2/ffffff?text=Pose+2" alt="Pose 2">
+                <p>Pose 2</p>
+            </div>
+            <div class="gallery-item gallery-toggle" onclick="toggleGalleryView()">
+                <img src="https://via.placeholder.com/200x250/f093fb/ffffff?text=Click+to+Switch" alt="Switch View">
+                <p>🔄 Click to Switch</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FILE TREE DOCUMENTATION ===== -->
+    <section class="documentation">
+        <h2 class="section-title">Documentation</h2>
+        <div class="tree-container">
+            <ul>
+                <!-- Player Role Section -->
+                <li class="tree-item">
+                    <input type="checkbox" id="folder-role" class="tree-toggle" checked />
+                    <label for="folder-role" class="tree-label">
+                        <svg class="icon folder-closed-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                        </svg>
+                        <svg class="icon folder-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                            <path d="M2 10h20"></path>
+                        </svg>
+                        📋 Player Role
+                    </label>
+                    <div class="tree-children-wrapper">
+                        <ul class="tree-children">
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Player_Overview.txt
+                                </div>
+                            </li>
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Abilities.txt
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Game Guide Section -->
+                <li class="tree-item">
+                    <input type="checkbox" id="folder-guide" class="tree-toggle" checked />
+                    <label for="folder-guide" class="tree-label">
+                        <svg class="icon folder-closed-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                        </svg>
+                        <svg class="icon folder-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                            <path d="M2 10h20"></path>
+                        </svg>
+                        📖 How to Play
+                    </label>
+                    <div class="tree-children-wrapper">
+                        <ul class="tree-children">
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Getting_Started.txt
+                                </div>
+                            </li>
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Tips_and_Tricks.txt
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <!-- Social Channels Section -->
+                <li class="tree-item">
+                    <input type="checkbox" id="folder-social" class="tree-toggle" checked />
+                    <label for="folder-social" class="tree-label">
+                        <svg class="icon folder-closed-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                        </svg>
+                        <svg class="icon folder-open-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 2H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"></path>
+                            <path d="M2 10h20"></path>
+                        </svg>
+                        📱 Follow Us
+                    </label>
+                    <div class="tree-children-wrapper">
+                        <ul class="tree-children">
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Twitter.txt
+                                </div>
+                            </li>
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Instagram.txt
+                                </div>
+                            </li>
+                            <li class="tree-item">
+                                <div class="file-item">
+                                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                    </svg>
+                                    Discord.txt
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>&copy; 2024 Character Wiki. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
